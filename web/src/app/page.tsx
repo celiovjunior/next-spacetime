@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <h1>hello world!</h1>
+    <div className="text-2xl p-4 bg-zinc-800 text-white uppercase w-20 rounded text-center">
+      oie
+    </div>
   )
 }
