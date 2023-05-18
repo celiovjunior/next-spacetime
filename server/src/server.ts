@@ -1,6 +1,9 @@
 import fastify from 'fastify'
-import { memoriesRoutes } from './routes/memories'
 import cors from '@fastify/cors'
+import 'dotenv/config'
+import { memoriesRoutes } from './routes/memories'
+import { authRoute } from './routes/auth'
+import { fastifyJwt as jwt } from '@fastify/jwt'
 
 const app = fastify()
 
@@ -10,6 +13,10 @@ app.register(cors, {
 })
 
 app.register(memoriesRoutes)
+app.register(authRoute)
+app.register(jwt, {
+  secret: 'spacetime',
+})
 
 app
   .listen({
