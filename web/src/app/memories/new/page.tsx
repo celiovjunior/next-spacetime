@@ -1,3 +1,4 @@
+import { MediaPicker } from "@/components/MediaPicker";
 import { Camera, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -19,7 +20,8 @@ export default function NewMemory() {
             Turn this memory public
           </label>
         </div>
-        <input type="file" name="" id="media" className="invisible h-0 w-0" />
+
+        <MediaPicker />
 
         <textarea name="content" spellCheck={false} className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0" placeholder="Feel free to add a picture, video or testimonial about this experience that you want to remember for ever" />
       </form>
