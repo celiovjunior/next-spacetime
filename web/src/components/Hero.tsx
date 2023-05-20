@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from '../assets/logo.svg';
+import Link from "next/link";
 
 
 export function Hero() {
@@ -12,7 +13,7 @@ export function Hero() {
       <p className="text-lg leading-relaxed">Collect amazing moments of your jorney and share (if you want) with the world! 🌏</p>
     </div>
 
-    <a className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-400 transition-colors" href="">REGISTER A MEMORY</a>
+    <Link className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-400 transition-colors" href="/memories/new">REGISTER A MEMORY</Link>
 
   </div>
   )
