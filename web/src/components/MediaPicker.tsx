@@ -19,7 +19,7 @@ export function MediaPicker() {
 
   return (
     <>
-      <input accept="image/*" onChange={onFileSelected} type="file" name="" id="media" className="invisible h-0 w-0" />
+      <input accept="image/*" name="coverUrl" onChange={onFileSelected} type="file" id="media" className="invisible h-0 w-0" />
 
       {preview && <img src={preview} alt="" className="w-full aspect-video rounded-lg object-cover" />}
     
