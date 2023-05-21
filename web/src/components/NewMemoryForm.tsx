@@ -17,7 +17,7 @@ export function NewMemoryForm() {
 
     const fileToUpload = formData.get('coverUrl')
 
-    let coverUrl = ''
+    let coverUrl = ' '
     
     if (fileToUpload) {
       const uploadFormData = new FormData()
@@ -42,7 +42,6 @@ export function NewMemoryForm() {
     })
 
     router.push('/')
-
   }
 
   return (
@@ -59,9 +58,9 @@ export function NewMemoryForm() {
 
       <MediaPicker />
 
-    <textarea name="content" spellCheck={false} className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0" placeholder="Feel free to add a picture, video or testimonial about this experience that you want to remember for ever" />
+      <textarea name="content" spellCheck={false} className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0" placeholder="Feel free to add a picture, video or testimonial about this experience that you want to remember for ever" />
   
-    <button className="inline-block rounded-full bg-blue-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-blue-400 transition-colors  self-end" type="submit">Save</button>
-  </form>
+      <button className="inline-block rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-400 transition-colors  self-end" type="submit">Save</button>
+    </form>
   )
 }
