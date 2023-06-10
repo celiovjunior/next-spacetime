@@ -29,10 +29,6 @@ export async function uploadRoutes(app: FastifyInstance) {
       return reply.status(400).send()
     }
 
-    if (!isValidFileFormat) {
-      return reply.status(400).send()
-    }
-
     // to avoid files with duplicate name, let's change the file name to a random code
     const fileId = randomUUID()
     const extension = extname(upload.filename)

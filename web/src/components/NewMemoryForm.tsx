@@ -37,7 +37,7 @@ export function NewMemoryForm() {
       isPublic: formData.get('isPublic'),
     }, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       }
     })
 
@@ -48,8 +48,10 @@ export function NewMemoryForm() {
     <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
 
       <div className="flex items-center gap-4">
-        <label htmlFor="media" className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100">Upload media
-        <Camera className="w-4 h-4" /></label>
+        <label htmlFor="media" className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 hover:text-gray-100">
+        <Camera className="w-4 h-4" />
+          Upload media
+        </label>
         <label htmlFor="isPublic" className="flex items-center text-sm gap-1.5 text-gray-200 hover:text-gray-100">
           <input type="checkbox" name="isPublic" id="isPublic" value="true" className="h-4 w-4 rounded border-gray-400 bg-gray-700 text-purple-500 " />
           Turn this memory public
