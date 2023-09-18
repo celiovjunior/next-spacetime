@@ -54,6 +54,8 @@ export async function memoriesRoutes(app: FastifyInstance) {
         userId: '6b0b0411-0de4-45c0-a03d-71476738937e',
       },
     })
+
+    return memory
   })
 
   app.put('/memories/:id', async (request) => {
@@ -84,7 +86,8 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
     return updatedMemory
   })
-  app.delete('/memories/:id', async (request, reply) => {
+
+  app.delete('/memories/:id', async (request) => {
     const paramsSchema = z.object({
       id: z.string().uuid(),
     })
