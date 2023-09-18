@@ -19,7 +19,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
     })
   })
 
-  app.get('/memories/:id', async (request, reply) => {
+  app.get('/memories/:id', async (request) => {
     // const { id } = request.params
 
     const paramsSchema = z.object({
@@ -37,16 +37,64 @@ export async function memoriesRoutes(app: FastifyInstance) {
     return memory
   })
 
-  app.post('/memories', async () => {
-    const users = await prisma.user.findMany()
-    return users
+  app.post('/memories', async (request) => {
+    const bodySchema = z.object({
+      content: z.string(),
+      coverUrl: z.string(),
+      isPublic: z.coerce.boolean().default(false),
+    })
+
+    const { content, coverUrl, isPublic } = bodySchema.parse(request.body)
+
+    const memory = await prisma.memory.create({
+      data: {
+        content,
+        coverUrl,
+        isPublic,
+        userId: '6b0b0411-0de4-45c0-a03d-71476738937e',
+      },
+    })
   })
-  app.put('/memories/:id', async () => {
-    const users = await prisma.user.findMany()
-    return users
+
+  app.put('/memories/:id', async (request) => {
+    const paramsSchema = z.object({
+      id: z.string().uuid(),
+    })
+
+    const { id } = paramsSchema.parse(request.params)
+
+    const bodySchema = z.object({
+      content: z.string(),
+      coverUrl: z.string(),
+      isPublic: z.coerce.boolean().default(false),
+    })
+
+    const { content, coverUrl, isPublic } = bodySchema.parse(request.body)
+
+    const updatedMemory = await prisma.memory.update({
+      where: {
+        id,
+      },
+      data: {
+        content,
+        coverUrl,
+        isPublic,
+      },
+    })
+
+    return updatedMemory
   })
-  app.delete('/memories/:id', async () => {
-    const users = await prisma.user.findMany()
-    return users
+  app.delete('/memories/:id', async (request, reply) => {
+    const paramsSchema = z.object({
+      id: z.string().uuid(),
+    })
+
+    const { id } = paramsSchema.parse(request.params)
+
+    await prisma.memory.delete({
+      where: {
+        id,
+      },
+    })
   })
 }
